@@ -19,6 +19,7 @@
                     return "scissors";
             }
         }
+
         playRound = function(playerSelection, computerSelection) {
             if(playerSelection.toLowerCase() == computerSelection) {
                 return "It's a tie!";
@@ -48,7 +49,16 @@
                 }
             }
         }
-        console.log(playRound("rock", getComputerChoice()));
+        
+        game = function() {
+            playerSelection = prompt("Rock, Paper or Scissors?");
+            computerSelection = getComputerChoice();
+            score = 0;
+
+            for(i = 0; i < 5; i++) {
+                playRound(playerSelection, computerSelection);
+            }
+        }
     </script>
 </body>
 </html>
