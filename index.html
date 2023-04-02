@@ -12,14 +12,43 @@
             choice = Math.floor(Math.random() * 3);
             switch(choice) {
                 case 0:
-                    return "Rock";
+                    return "rock";
                 case 1:
-                    return "Paper";
+                    return "paper";
                 case 2:
-                    return "Scissors";
+                    return "scissors";
             }
         }
-
+        playRound = function(playerSelection, computerSelection) {
+            if(playerSelection.toLowerCase() == computerSelection) {
+                return "It's a tie!";
+            }
+            if(playerSelection.toLowerCase() == "rock") {
+                if(computerSelection == "paper") {
+                    return "You win!";
+                }
+                if(computerSelection == "scissors") {
+                    return "You lose!";
+                }
+            }
+            if(playerSelection.toLowerCase() == "paper") {
+                if(computerSelection == "rock") {
+                    return "You win!";
+                }
+                if(computerSelection == "scissors") {
+                    return "You lose!";
+                }
+            }
+            if(playerSelection.toLowerCase() == "scissors") {
+                if(computerSelection == "rock") {
+                    return "You lose!";
+                }
+                if(computerSelection == "paper") {
+                    return "You win!";
+                }
+            }
+        }
+        console.log(playRound("rock", getComputerChoice()));
     </script>
 </body>
 </html>
