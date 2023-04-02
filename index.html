@@ -7,6 +7,7 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <p class="game"></p>
     <script>
         getComputerChoice = function() {
             choice = Math.floor(Math.random() * 3);
@@ -49,16 +50,19 @@
                 }
             }
         }
-        
-        game = function() {
-            playerSelection = prompt("Rock, Paper or Scissors?");
-            computerSelection = getComputerChoice();
-            score = 0;
 
-            for(i = 0; i < 5; i++) {
-                playRound(playerSelection, computerSelection);
+        game = function() {
+            round = 0;
+            computerScore = 0;
+            playerScore = 0;
+
+            for(round; round < 5; round++) {
+                playerSelection = prompt("Rock, Paper or Scissors?");
+                computerSelection = getComputerChoice();
+                console.log(playRound(playerSelection, computerSelection));
             }
         }
+        game();
     </script>
 </body>
 </html>
