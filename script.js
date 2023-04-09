@@ -88,11 +88,13 @@ playGame = function(playerScore,computerScore) {
                 console.log("You win!");
                 playerScore++;
                 showPlayerScore.textContent = `${playerScore}`
+                console.log(playerScore);
             }
             else if(PlayRound == "You lose!") {
                 console.log("You lose!");
                 computerScore++;
                 showComputerScore.textContent = `${computerScore}`
+                console.log(computerScore);
             }
             else{
                 console.log("It's a tie!");
@@ -123,7 +125,6 @@ playGame();
 let pScore = 0;
 let cScore = 0;
 resetScore = function(){
-    
     updateScore();
 }
 
@@ -134,3 +135,10 @@ playAgainBtn.addEventListener('click', e =>
     resetScore();
     playGame(pScore,cScore);
 });
+
+
+// TO DO:
+//show the plays on screen
+// show what the computer chose
+// show what the player chose
+// show who won
