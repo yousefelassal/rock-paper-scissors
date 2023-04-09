@@ -1,1 +1,107 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    margin: 0 auto;
+    padding: 5vh 0;
+    font-size: larger;
+    width: 100%;
+    /* color:#fff; */
+    text-align: center;
+    /* background: radial-gradient(100% 225% at 0% 0%, #DE3E3E 0%, #17115C 100%), radial-gradient(100% 225% at 100% 0%, #FF9040 0%, #FF0000 100%), linear-gradient(180deg, #CE63B7 0%, #ED6283 100%), radial-gradient(100% 120% at 75% 0%, #A74600 0%, #000000 100%), linear-gradient(310deg, #0063D8 0%, #16009A 50%);
+    background-blend-mode: overlay, color-dodge, color-burn, color-dodge, normal; */
+    justify-content: center;
+    align-items: center;
+}
+
+.player-computer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+}
+
+.player,.computer{
+    margin: 4vh 32vh;
+    flex: auto;
+    flex-direction: column;
+    padding:4px;
+    text-align: center;
+}
+
+#player,#computer{
+    padding: 12px;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .choices{
+    flex-direction: row;
+}
+
+.container .card{
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s;
+}
+
+.container .card:hover{
+    transform: translateY(-15px);
+}
+
+.container .card .imgBx{
+    width: 100%;
+    height: 200px;
+}
+
+.container .card .imgBx img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container .card .content{
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container .card .content h2{
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.container .card .content p{
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+

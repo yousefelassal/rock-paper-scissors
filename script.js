@@ -1,5 +1,7 @@
 const score = document.querySelector("#score");
 const playerChoice = document.querySelectorAll(".playerChoice");
+const showPlayerScore = document.querySelector("#player-score");
+const showComputerScore = document.querySelector("#computer-score");
 
 getComputerChoice = function() {
     choice = Math.floor(Math.random() * 3);
@@ -53,10 +55,16 @@ endGame = function() {
     }
 }
 
+updateScore = function(){
+    showPlayerScore.textContent = `${playerScore}`
+    showComputerScore.textContent = `${computerScore}`
+}
+
 let computerScore = 0;
 let playerScore = 0;
 playGame = function() {
     // best of 5 rounds (first to get 3)
+    updateScore();
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
             if(playerScore == 3 || computerScore == 3) {
@@ -68,10 +76,12 @@ playGame = function() {
             if(PlayRound == "You win!") {
                 console.log("You win!");
                 playerScore++;
+                updateScore();
             }
             else if(PlayRound == "You lose!") {
                 console.log("You lose!");
                 computerScore++;
+                updateScore();
             }
             else{
                 console.log("It's a tie!");
