@@ -44,6 +44,15 @@ playRound = function(playerSelection) {
     }
 }
 
+endGame = function() {
+    if(playerScore == 3) {
+        alert("You win!");
+    }
+    else if(computerScore == 3) {
+        alert("You lose!");
+    }
+}
+
 let computerScore = 0;
 let playerScore = 0;
 playGame = function() {
@@ -51,6 +60,7 @@ playGame = function() {
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
             if(playerScore == 3 || computerScore == 3) {
+                endGame();
                 return;
             }
             let playerSelection = choice.value;
