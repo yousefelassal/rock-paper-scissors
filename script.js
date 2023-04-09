@@ -50,6 +50,9 @@ playGame = function() {
     // best of 5 rounds (first to get 3)
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
+            if(playerScore == 3 || computerScore == 3) {
+                return;
+            }
             let playerSelection = choice.value;
             let PlayRound = playRound(playerSelection);
             if(PlayRound == "You win!") {
@@ -62,7 +65,6 @@ playGame = function() {
             }
             else{
                 console.log("It's a tie!");
-                showScore.textContent = "It's a tie!";
             }
             console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
             score.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`
