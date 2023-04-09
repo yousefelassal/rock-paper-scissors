@@ -7,7 +7,8 @@
 }
 
 body{
-    background-color: #fff;
+    background:url(images/backdrop.jpg) no-repeat;
+    background-size: cover;
     font-family: 'Press Start 2P', cursive;
     overflow-x: hidden;
     display: flex;
@@ -29,16 +30,16 @@ header{
     align-items: center;
 }
 
-.player-computer{
+.scoreboard{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width:100%;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100%;
+    font-size: medium;
+    text-align: center;
 }
 
 .player,.computer{
-    margin: 4vh 32vh;
-    flex: auto;
     flex-direction: column;
     padding:4px;
     text-align: center;
@@ -49,59 +50,53 @@ header{
 }
 
 .container{
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    justify-content: space-around;
+    background-color: #B2FFFF80;
+    border-radius: 8px;
+    padding: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    height: 60vh;
+    transition: opacity 0.5s ease 0.6s;
+    margin: 24px;
+    flex: auto;
 }
 
 .container .choices{
-    flex-direction: row;
-}
-
-.container .card{
-    width: 300px;
-    height: 400px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    position: relative;
-    transition: 0.5s;
-}
-
-.container .card:hover{
-    transform: translateY(-15px);
-}
-
-.container .card .imgBx{
-    width: 100%;
-    height: 200px;
-}
-
-.container .card .imgBx img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.container .card .content{
-    width: 100%;
-    height: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1500px;
     padding: 20px;
+}
+
+button{
+    background-color: #BCAFDC;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+    color: #301E51;
+    max-width: 20%;
+    cursor: pointer;
     text-align: center;
 }
 
-.container .card .content h2{
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 10px;
+#rock-gif
+{
+    max-width: 80%;
 }
 
-.container .card .content p{
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
+#paper-gif
+{
+    max-width: 80%;
 }
 
+#scissors-gif
+{
+    max-width: 80%;
+}

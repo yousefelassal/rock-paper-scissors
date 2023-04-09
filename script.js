@@ -87,7 +87,6 @@ playGame = function() {
                 console.log("It's a tie!");
             }
             console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
-            score.textContent = `Player Score: ${playerScore} Computer Score: ${computerScore}`
         })
     })
 }
