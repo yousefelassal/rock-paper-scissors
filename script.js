@@ -2,6 +2,9 @@ const score = document.querySelector("#score");
 const playerChoice = document.querySelectorAll(".playerChoice");
 const showPlayerScore = document.querySelector("#player-score");
 const showComputerScore = document.querySelector("#computer-score");
+const roundsBtn = document.querySelectorAll(".rounds");
+const introScreen = document.querySelector('.intro');
+
 
 getComputerChoice = function() {
     choice = Math.floor(Math.random() * 3);
@@ -46,14 +49,6 @@ playRound = function(playerSelection) {
     }
 }
 
-endGame = function() {
-    if(playerScore == 3) {
-        alert("You win!");
-    }
-    else if(computerScore == 3) {
-        alert("You lose!");
-    }
-}
 
 updateScore = function(){
     showPlayerScore.textContent = `${playerScore}`
@@ -63,14 +58,26 @@ updateScore = function(){
 let computerScore = 0;
 let playerScore = 0;
 playGame = function() {
-    // best of 5 rounds (first to get 3)
+    let ROUNDS = 0;
+    roundsBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            ROUNDS = btn.value;
+            console.log(ROUNDS);
+        })
+    })
+    endGame = function() {
+        if(playerScore == ROUNDS) {
+            alert("You win!");
+        }
+        else if(computerScore == ROUNDS) {
+            alert("You lose!");
+        }
+    }
+    
+    
     updateScore();
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
-            if(playerScore == 3 || computerScore == 3) {
-                endGame();
-                return;
-            }
             let playerSelection = choice.value;
             let PlayRound = playRound(playerSelection);
             if(PlayRound == "You win!") {
@@ -87,8 +94,18 @@ playGame = function() {
                 console.log("It's a tie!");
             }
             console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+            if(playerScore == ROUNDS || computerScore == ROUNDS) {
+                updateScore();
+                endGame();
+                return;
+            }
         })
     })
 }
 
 playGame();
+
+resetScore = function(){
+    playerScore = 0;
+    computerScore = 0;
+}
