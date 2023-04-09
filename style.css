@@ -10,11 +10,12 @@ body{
     background:url(images/backdrop.jpg) no-repeat;
     background-size: cover;
     font-family: 'Press Start 2P', cursive;
-    overflow-x: hidden;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: 100%;
 }
 
 header{
@@ -62,9 +63,10 @@ header{
     font-weight: bolder;
     font-size: 20px;
     height: 60vh;
-    transition: opacity 0.5s ease 0.6s;
+    transition: opacity 0.2s ease 0.6s;
     margin: 24px;
     flex: auto;
+    transform: translate(0, -80%);
 }
 
 .container .choices{
@@ -149,4 +151,22 @@ div.fadeIn
 {
     opacity: 1;
     pointer-events: all;
+}
+
+.winner-screen
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 1500px;
+    min-width: fit-content;
+    color: #FF4E4E;
+    font-family: 'Press Start 2P', sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+    position: center;
+    transform: translate(0, -225%);
+    height: 50vh;
+    transition: opacity 1s ease;
 }

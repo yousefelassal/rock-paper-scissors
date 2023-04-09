@@ -4,6 +4,10 @@ const showPlayerScore = document.querySelector("#player-score");
 const showComputerScore = document.querySelector("#computer-score");
 const roundsBtn = document.querySelectorAll(".rounds");
 const introScreen = document.querySelector('.intro');
+const gameScreen = document.querySelector('.container');
+let winnerScreen = document.querySelector('.winner-screen');
+let winnerText = document.querySelector('.winner-screen .text');
+let playAgainBtn = document.querySelector('.winner-screen button');
 
 
 getComputerChoice = function() {
@@ -51,29 +55,29 @@ playRound = function(playerSelection) {
 
 
 updateScore = function(){
+    let playerScore = 0;
+    let computerScore = 0;
     showPlayerScore.textContent = `${playerScore}`
     showComputerScore.textContent = `${computerScore}`
 }
 
-let computerScore = 0;
-let playerScore = 0;
-playGame = function() {
+
+playGame = function(playerScore,computerScore) {
+    computerScore = 0;
+    playerScore = 0;
+    introScreen.classList.remove('fadeOut');
+    introScreen.classList.add('fadeIn');
     let ROUNDS = 0;
     roundsBtn.forEach(btn => {
         btn.addEventListener("click", () => {
             ROUNDS = btn.value;
             console.log(ROUNDS);
+            introScreen.classList.add('fadeOut');
+            introScreen.classList.remove('fadeIn');
+            gameScreen.classList.remove('fadeOut');
+            gameScreen.classList.add('fadeIn');
         })
     })
-    endGame = function() {
-        if(playerScore == ROUNDS) {
-            alert("You win!");
-        }
-        else if(computerScore == ROUNDS) {
-            alert("You lose!");
-        }
-    }
-    
     
     updateScore();
     playerChoice.forEach(choice =>{
@@ -83,21 +87,32 @@ playGame = function() {
             if(PlayRound == "You win!") {
                 console.log("You win!");
                 playerScore++;
-                updateScore();
+                showPlayerScore.textContent = `${playerScore}`
             }
             else if(PlayRound == "You lose!") {
                 console.log("You lose!");
                 computerScore++;
-                updateScore();
+                showComputerScore.textContent = `${computerScore}`
             }
             else{
                 console.log("It's a tie!");
             }
             console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
             if(playerScore == ROUNDS || computerScore == ROUNDS) {
-                updateScore();
-                endGame();
-                return;
+                if(playerScore == ROUNDS){
+                    gameScreen.classList.remove('fadeIn');
+                    gameScreen.classList.add('fadeOut');
+                    winnerScreen.classList.add('fadeIn');
+                    winnerText.textContent = "You Won!";
+                    return;
+                }
+                else if(computerScore == ROUNDS){
+                    gameScreen.classList.remove('fadeIn');
+                    gameScreen.classList.add('fadeOut');
+                    winnerScreen.classList.add('fadeIn');
+                    winnerText.textContent = "You Lost!";
+                    return;
+                }
             }
         })
     })
@@ -105,7 +120,17 @@ playGame = function() {
 
 playGame();
 
+let pScore = 0;
+let cScore = 0;
 resetScore = function(){
-    playerScore = 0;
-    computerScore = 0;
+    
+    updateScore();
 }
+
+playAgainBtn.addEventListener('click', e =>
+{
+    winnerScreen.classList.remove('fadeIn');
+    winnerScreen.classList.add('fadeOut');
+    resetScore();
+    playGame(pScore,cScore);
+});
