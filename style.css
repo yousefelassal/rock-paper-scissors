@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:url(images/backdrop.jpg) no-repeat;
+    background-size: cover;
+    font-family: 'Press Start 2P', cursive;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+}
+
+header{
+    margin: 0 auto;
+    padding: 5vh 0;
+    font-size: larger;
+    width: 100%;
+    /* color:#fff; */
+    text-align: center;
+    /* background: radial-gradient(100% 225% at 0% 0%, #DE3E3E 0%, #17115C 100%), radial-gradient(100% 225% at 100% 0%, #FF9040 0%, #FF0000 100%), linear-gradient(180deg, #CE63B7 0%, #ED6283 100%), radial-gradient(100% 120% at 75% 0%, #A74600 0%, #000000 100%), linear-gradient(310deg, #0063D8 0%, #16009A 50%);
+    background-blend-mode: overlay, color-dodge, color-burn, color-dodge, normal; */
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreboard{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100%;
+    font-size: medium;
+    text-align: center;
+}
+
+.player,.computer{
+    flex-direction: column;
+    padding:4px;
+    text-align: center;
+}
+
+#player,#computer{
+    padding: 12px;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #B2FFFF80;
+    border-radius: 8px;
+    padding: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+    height: 60vh;
+    transition: opacity 0.2s ease 0.6s;
+    margin: 24px;
+    flex: auto;
+    transform: translate(0, -80%);
+}
+
+.container .choices{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1500px;
+    padding: 20px;
+}
+
+button{
+    background-color: #BCAFDC;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+    color: #301E51;
+    max-width: 20%;
+    cursor: pointer;
+    text-align: center;
+    padding: 4px;
+}
+
+#rock-gif
+{
+    max-width: 80%;
+}
+
+#paper-gif
+{
+    max-width: 80%;
+}
+
+#scissors-gif
+{
+    max-width: 80%;
+}
+
+.intro
+{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 60vh;
+    transition: opacity 0.6s ease;
+}
+
+.intro .intro-buttons{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    gap:20px;
+}
+
+.intro .intro-buttons button{
+    max-width: 100%;
+    padding:12px;
+}
+
+.winner-screen button{
+    max-width:100%;
+    padding:12px;
+}
+
+.intro h2{
+    font-size: 72px;
+    font-weight: bolder;
+    text-align: center;
+    color: #301E51;
+    padding: 20px;
+}
+
+div.fadeOut
+{
+    opacity: 0;
+    pointer-events: none;
+}
+
+div.fadeIn
+{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.winner-screen
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 1500px;
+    min-width: fit-content;
+    color: #FF4E4E;
+    font-family: 'Press Start 2P', sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+    position: center;
+    transform: translate(0, -225%);
+    height: 50vh;
+    transition: opacity 1s ease;
+}

@@ -4,10 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <p class="game"></p>
-    <script src="script.js"></script>
+    <header>Rock Paper Scissors</header>
+    <div class="intro">
+        <h2>
+            Choose Rounds
+        </h2>
+        <div class="intro-buttons">
+            <button class="rounds" value="2">Best of 3!</button>
+            <button class="rounds" value="3">Best of 5!</button>
+            <button class="rounds" value="4">Best of 7!</button>
+        </div>
+    </div>
+    <div class="container fadeOut">
+        <div class="scoreboard">
+            <div class="player">
+                <div id="player">Player</div>
+                <div id="player-score"></div>
+            </div>
+            <div class="computer">
+                <div id="computer">Computer</div>
+                <div id="computer-score"></div>
+            </div>
+        </div>
+
+        <div class="choices">
+            <button class="playerChoice" value="rock"><img id="rock-gif" src="images/rock.gif"></button>
+            <button class="playerChoice" value="paper"><img id="paper-gif" src="images/paper.gif"></button>
+            <button class="playerChoice" value="scissors"><img id="scissors-gif" src="images/scissors.gif"></button>
+        </div>
+    </div>
+    <div class="winner-screen fadeOut">
+        <div class="text"></div>
+        <button>Play again?</button>
+      </div>
 </body>
 </html>
