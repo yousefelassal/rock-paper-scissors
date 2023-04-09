@@ -49,17 +49,19 @@ let playerScore = 0;
 playGame = function() {
     // best of 5 rounds (first to get 3)
     
-     do{
-        let PlayRound = playRound();
-        if(PlayRound == "You win!") {
-            playerScore++;
-        }
-        if(PlayRound == "You lose!") {
-            computerScore++;
-        }
-        console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
-    }
-    while(playerScore != 3 && computerScore != 3);
+    playerChoice.forEach(choice =>{
+        choice.addEventListener("click", () => {
+            let playerSelection = choice.value;
+            let PlayRound = playRound(playerSelection);
+            if(PlayRound == "You win!") {
+                playerScore++;
+            }
+            if(PlayRound == "You lose!") {
+                computerScore++;
+            }
+            console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
+        })
+    })
 }
 
 playGame();
