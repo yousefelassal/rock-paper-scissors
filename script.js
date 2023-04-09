@@ -1,3 +1,6 @@
+const score = document.querySelector("#score");
+const playerChoice = document.querySelectorAll(".playerChoice");
+
 getComputerChoice = function() {
     choice = Math.floor(Math.random() * 3);
     switch(choice) {
@@ -10,11 +13,12 @@ getComputerChoice = function() {
     }
 }
 
-playRound = function(playerSelection, computerSelection) {
-    if(playerSelection.toLowerCase() == computerSelection) {
+playRound = function(playerSelection) {
+    let computerSelection = getComputerChoice();
+    if(playerSelection == computerSelection) {
         return "It's a tie!";
     }
-    if(playerSelection.toLowerCase() == "rock") {
+    if(playerSelection == "rock") {
         if(computerSelection == "paper") {
             return "You win!";
         }
@@ -22,7 +26,7 @@ playRound = function(playerSelection, computerSelection) {
             return "You lose!";
         }
     }
-    if(playerSelection.toLowerCase() == "paper") {
+    if(playerSelection == "paper") {
         if(computerSelection == "rock") {
             return "You win!";
         }
@@ -30,7 +34,7 @@ playRound = function(playerSelection, computerSelection) {
             return "You lose!";
         }
     }
-    if(playerSelection.toLowerCase() == "scissors") {
+    if(playerSelection == "scissors") {
         if(computerSelection == "rock") {
             return "You lose!";
         }
@@ -40,16 +44,13 @@ playRound = function(playerSelection, computerSelection) {
     }
 }
 
-game = function() {
+let computerScore = 0;
+let playerScore = 0;
+playGame = function() {
     // best of 5 rounds (first to get 3)
-    computerScore = 0;
-    playerScore = 0;
-
-    while(playerScore != 3 && computerScore != 3) {
-        playerSelection = prompt("Rock, Paper or Scissors?");
-        computerSelection = getComputerChoice();
-        PlayRound = playRound(playerSelection, computerSelection);
-        console.log(PlayRound);
+    
+     do{
+        let PlayRound = playRound();
         if(PlayRound == "You win!") {
             playerScore++;
         }
@@ -58,5 +59,7 @@ game = function() {
         }
         console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
     }
+    while(playerScore != 3 && computerScore != 3);
 }
-game();
+
+playGame();
