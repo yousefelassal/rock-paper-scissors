@@ -62,7 +62,7 @@ header{
     padding: 20px;
     font-weight: bolder;
     font-size: 20px;
-    height: 60vh;
+    height: 65vh;
     transition: opacity 0.2s ease 0.6s;
     margin: 24px;
     flex: auto;
@@ -79,7 +79,8 @@ header{
 }
 
 .plays{
-    max-width:30%;
+    /* border: 2px solid #301E51; */
+    max-width: 100%;
     max-height: 20%;
     display: flex;
     flex-direction: row;
@@ -87,7 +88,10 @@ header{
     align-items: center;
     flex-flow: row wrap;
     transition: opacity 0.2s ease 0.6s;
-    transform: translate(0, -50%);
+}
+
+#player-play img, #computer-play img{
+    max-width: 80%;
 }
 
 #player-play, #computer-play{
@@ -95,11 +99,14 @@ header{
 }
 
 .result-container{
+    /* border: 2px solid #301E51; */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     justify-content: space-around;
     color: #FF4E4E;
+    height:150%;
+    width:35%;
 }
 
 button{
