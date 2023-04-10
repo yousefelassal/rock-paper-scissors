@@ -2,6 +2,10 @@ const score = document.querySelector("#score");
 const playerChoice = document.querySelectorAll(".playerChoice");
 const showPlayerScore = document.querySelector("#player-score");
 const showComputerScore = document.querySelector("#computer-score");
+let playerPlay = document.querySelector("#player-play");
+let computerPlay = document.querySelector("#computer-play");
+let result = document.querySelector("#result");
+let plays = document.querySelector(".result-container");
 const roundsBtn = document.querySelectorAll(".rounds");
 const introScreen = document.querySelector('.intro');
 const gameScreen = document.querySelector('.container');
@@ -25,76 +29,168 @@ getComputerChoice = function() {
 playRound = function(playerSelection) {
     let computerSelection = getComputerChoice();
     if(playerSelection == computerSelection) {
-        return "It's a tie!";
+        if(playerSelection == "rock" && computerSelection == "rock") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id=\"rock-gif\" src=\"images/rock.gif\">";
+                computerPlay.innerHTML = "<img id=\"rock-gif\" src=\"images/rock.gif\">";
+                result.textContent = "It's a tie!";
+                plays.classList.add('fadeIn');
+            },300);
+            return "It's a tie!";
+        }
+        if(playerSelection == "paper" && computerSelection == "paper") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+                computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+                result.textContent = "It's a tie!";
+                plays.classList.add('fadeIn');
+            },300);
+            return "It's a tie!";
+        }
+        if(playerSelection == "scissors" && computerSelection == "scissors") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+                computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+                result.textContent = "It's a tie!";
+                plays.classList.add('fadeIn');
+            },300);
+            return "It's a tie!";
+            
+        }
     }
     if(playerSelection == "rock") {
         if(computerSelection == "paper") {
-            return "You win!";
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+                computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+                result.textContent = "You lose!";
+                plays.classList.add('fadeIn');
+            },300);
+            return "You lose!";
         }
         if(computerSelection == "scissors") {
-            return "You lose!";
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+                computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+                result.textContent = "You win!";
+                plays.classList.add('fadeIn');
+            },300);
+            return "You win!";
         }
     }
     if(playerSelection == "paper") {
         if(computerSelection == "rock") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+                computerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+                result.textContent = "You win!";
+                plays.classList.add('fadeIn');
+            },300);
             return "You win!";
         }
         if(computerSelection == "scissors") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+                computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+                result.textContent = "You lose!";
+                plays.classList.add('fadeIn');
+            },300);
             return "You lose!";
         }
     }
     if(playerSelection == "scissors") {
         if(computerSelection == "rock") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+                computerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+                result.textContent = "You lose!";
+                plays.classList.add('fadeIn');
+            },300);
             return "You lose!";
         }
         if(computerSelection == "paper") {
+            if(plays.classList.contains('fadeIn')) {
+                plays.classList.remove('fadeIn');
+                plays.classList.add('fadeOut');
+            }
+            setTimeout(()=>{
+                plays.classList.remove('fadeOut');
+                playerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+                computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+                result.textContent = "You win!";
+                plays.classList.add('fadeIn');
+            },300);
             return "You win!";
         }
     }
 }
 
 
-updateScore = function(){
-    let playerScore = 0;
-    let computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
+playGame = function(ROUNDS) {
     showPlayerScore.textContent = `${playerScore}`
     showComputerScore.textContent = `${computerScore}`
-}
-
-
-playGame = function(playerScore,computerScore) {
-    computerScore = 0;
-    playerScore = 0;
-    introScreen.classList.remove('fadeOut');
-    introScreen.classList.add('fadeIn');
-    let ROUNDS = 0;
-    roundsBtn.forEach(btn => {
-        btn.addEventListener("click", () => {
-            ROUNDS = btn.value;
-            console.log(ROUNDS);
-            introScreen.classList.add('fadeOut');
-            introScreen.classList.remove('fadeIn');
-            gameScreen.classList.remove('fadeOut');
-            gameScreen.classList.add('fadeIn');
-        })
-    })
-    
-    updateScore();
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
             let playerSelection = choice.value;
+            console.log(playerSelection);
             let PlayRound = playRound(playerSelection);
             if(PlayRound == "You win!") {
                 console.log("You win!");
                 playerScore++;
-                showPlayerScore.textContent = `${playerScore}`
-                console.log(playerScore);
+                setTimeout(()=>{
+                    showPlayerScore.textContent = `${playerScore}`
+                    console.log(playerScore);
+                },300);
             }
             else if(PlayRound == "You lose!") {
                 console.log("You lose!");
                 computerScore++;
-                showComputerScore.textContent = `${computerScore}`
-                console.log(computerScore);
+                setTimeout(()=>{
+                    showComputerScore.textContent = `${computerScore}`
+                    console.log(computerScore);
+                },300);
             }
             else{
                 console.log("It's a tie!");
@@ -104,15 +200,21 @@ playGame = function(playerScore,computerScore) {
                 if(playerScore == ROUNDS){
                     gameScreen.classList.remove('fadeIn');
                     gameScreen.classList.add('fadeOut');
-                    winnerScreen.classList.add('fadeIn');
-                    winnerText.textContent = "You Won!";
+                    setTimeout(()=>{
+                        winnerScreen.classList.add('fadeIn');
+                        winnerText.textContent = "You Won!";
+                    },500);
+                    
                     return;
                 }
                 else if(computerScore == ROUNDS){
                     gameScreen.classList.remove('fadeIn');
                     gameScreen.classList.add('fadeOut');
-                    winnerScreen.classList.add('fadeIn');
-                    winnerText.textContent = "You Lost!";
+                    setTimeout(()=>{
+                        winnerScreen.classList.add('fadeIn');
+                        winnerText.textContent = "You Lost!";
+                    },500);
+                    
                     return;
                 }
             }
@@ -120,25 +222,34 @@ playGame = function(playerScore,computerScore) {
     })
 }
 
-playGame();
+playAgainBtn.addEventListener('click', () =>{
+    // winnerScreen.classList.remove('fadeIn');
+    // winnerScreen.classList.add('fadeOut');
+    // plays.classList.remove('fadeIn');
+    // plays.classList.add('fadeOut');
+    // playerScore = 0;
+    // computerScore = 0;
+    // showPlayerScore.textContent = `${playerScore}`
+    // showComputerScore.textContent = `${computerScore}`
+    // setTimeout(()=>{
+    //     introScreen.classList.remove('fadeOut');
+    //     introScreen.classList.add('fadeIn');
+    // },500);
 
-let pScore = 0;
-let cScore = 0;
-resetScore = function(){
-    updateScore();
-}
+    //gave up on the bug so i had to do this
+    location.reload();
 
-playAgainBtn.addEventListener('click', e =>
-{
-    winnerScreen.classList.remove('fadeIn');
-    winnerScreen.classList.add('fadeOut');
-    resetScore();
-    playGame(pScore,cScore);
+    
 });
 
-
-// TO DO:
-//show the plays on screen
-// show what the computer chose
-// show what the player chose
-// show who won
+roundsBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        let ROUNDS = btn.value;
+        console.log(ROUNDS);
+        introScreen.classList.add('fadeOut');
+        introScreen.classList.remove('fadeIn');
+        gameScreen.classList.remove('fadeOut');
+        gameScreen.classList.add('fadeIn');
+        playGame(ROUNDS);
+    })
+})

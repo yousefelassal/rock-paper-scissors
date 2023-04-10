@@ -62,7 +62,7 @@ header{
     padding: 20px;
     font-weight: bolder;
     font-size: 20px;
-    height: 60vh;
+    height: 65vh;
     transition: opacity 0.2s ease 0.6s;
     margin: 24px;
     flex: auto;
@@ -76,6 +76,37 @@ header{
     justify-content: space-around;
     max-width: 1500px;
     padding: 20px;
+}
+
+.plays{
+    /* border: 2px solid #301E51; */
+    max-width: 100%;
+    max-height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+#player-play img, #computer-play img{
+    max-width: 80%;
+}
+
+#player-play, #computer-play{
+    max-width: 50%;
+}
+
+.result-container{
+    /* border: 2px solid #301E51; */
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    color: #FF4E4E;
+    height:150%;
+    width:35%;
+    transition: opacity 0.2s ease 0.2s;
 }
 
 button{
@@ -111,7 +142,7 @@ button{
     align-items: center;
     justify-content: space-around;
     height: 60vh;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease 0.2s;
 }
 
 .intro .intro-buttons{
@@ -168,5 +199,5 @@ div.fadeIn
     position: center;
     transform: translate(0, -225%);
     height: 50vh;
-    transition: opacity 1s ease;
+    transition: opacity 1s ease 0.2s;
 }
