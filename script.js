@@ -13,6 +13,16 @@ let winnerScreen = document.querySelector('.winner-screen');
 let winnerText = document.querySelector('.winner-screen .text');
 let playAgainBtn = document.querySelector('.winner-screen button');
 
+//rounds buttons
+const bestOfThree = document.querySelector('#bo3');
+const bestOfFive = document.querySelector('#bo5');
+const bestOfSeven = document.querySelector('#bo7');
+
+//choices buttons
+const rock = document.querySelector('#rock-btn');
+const paper = document.querySelector('#paper-btn');
+const scissors = document.querySelector('#scissors-btn');
+
 
 getComputerChoice = function() {
     choice = Math.floor(Math.random() * 3);
@@ -166,9 +176,9 @@ playRound = function(playerSelection) {
 }
 
 
+let playerScore = 0;
+let computerScore = 0;
 playGame = function() {
-    let playerScore = 0;
-    let computerScore = 0;
     showPlayerScore.textContent = `${playerScore}`
     showComputerScore.textContent = `${computerScore}`
     introScreen.classList.remove('fadeOut');
@@ -188,6 +198,7 @@ playGame = function() {
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
             let playerSelection = choice.value;
+            console.log(playerSelection);
             let PlayRound = playRound(playerSelection);
             if(PlayRound == "You win!") {
                 console.log("You win!");
@@ -227,6 +238,7 @@ playGame = function() {
                         winnerScreen.classList.add('fadeIn');
                         winnerText.textContent = "You Lost!";
                     },500);
+                    
                     return;
                 }
             }
@@ -234,17 +246,17 @@ playGame = function() {
     })
 }
 
-playGame();
-
 playAgainBtn.addEventListener('click', e =>
 {
     winnerScreen.classList.remove('fadeIn');
     winnerScreen.classList.add('fadeOut');
     plays.classList.remove('fadeIn');
     plays.classList.add('fadeOut');
-    let playerScore = 0;
-    let computerScore = 0;
+    playerScore = 0;
+    computerScore = 0;
     showPlayerScore.textContent = `${playerScore}`
     showComputerScore.textContent = `${computerScore}`
     playGame();
 });
+
+playGame();
