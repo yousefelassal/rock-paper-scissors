@@ -13,16 +13,6 @@ let winnerScreen = document.querySelector('.winner-screen');
 let winnerText = document.querySelector('.winner-screen .text');
 let playAgainBtn = document.querySelector('.winner-screen button');
 
-//rounds buttons
-const bestOfThree = document.querySelector('#bo3');
-const bestOfFive = document.querySelector('#bo5');
-const bestOfSeven = document.querySelector('#bo7');
-
-//choices buttons
-const rock = document.querySelector('#rock-btn');
-const paper = document.querySelector('#paper-btn');
-const scissors = document.querySelector('#scissors-btn');
-
 
 getComputerChoice = function() {
     choice = Math.floor(Math.random() * 3);
@@ -178,23 +168,9 @@ playRound = function(playerSelection) {
 
 let playerScore = 0;
 let computerScore = 0;
-playGame = function() {
+playGame = function(ROUNDS) {
     showPlayerScore.textContent = `${playerScore}`
     showComputerScore.textContent = `${computerScore}`
-    introScreen.classList.remove('fadeOut');
-    introScreen.classList.add('fadeIn');
-    let ROUNDS = 0;
-    roundsBtn.forEach(btn => {
-        btn.addEventListener("click", () => {
-            ROUNDS = btn.value;
-            console.log(ROUNDS);
-            introScreen.classList.add('fadeOut');
-            introScreen.classList.remove('fadeIn');
-            gameScreen.classList.remove('fadeOut');
-            gameScreen.classList.add('fadeIn');
-        })
-    })
-    
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
             let playerSelection = choice.value;
@@ -246,17 +222,34 @@ playGame = function() {
     })
 }
 
-playAgainBtn.addEventListener('click', e =>
-{
-    winnerScreen.classList.remove('fadeIn');
-    winnerScreen.classList.add('fadeOut');
-    plays.classList.remove('fadeIn');
-    plays.classList.add('fadeOut');
-    playerScore = 0;
-    computerScore = 0;
-    showPlayerScore.textContent = `${playerScore}`
-    showComputerScore.textContent = `${computerScore}`
-    playGame();
+playAgainBtn.addEventListener('click', () =>{
+    // winnerScreen.classList.remove('fadeIn');
+    // winnerScreen.classList.add('fadeOut');
+    // plays.classList.remove('fadeIn');
+    // plays.classList.add('fadeOut');
+    // playerScore = 0;
+    // computerScore = 0;
+    // showPlayerScore.textContent = `${playerScore}`
+    // showComputerScore.textContent = `${computerScore}`
+    // setTimeout(()=>{
+    //     introScreen.classList.remove('fadeOut');
+    //     introScreen.classList.add('fadeIn');
+    // },500);
+
+    //gave up on the bug so i had to do this
+    location.reload();
+
+    
 });
 
-playGame();
+roundsBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        let ROUNDS = btn.value;
+        console.log(ROUNDS);
+        introScreen.classList.add('fadeOut');
+        introScreen.classList.remove('fadeIn');
+        gameScreen.classList.remove('fadeOut');
+        gameScreen.classList.add('fadeIn');
+        playGame(ROUNDS);
+    })
+})
