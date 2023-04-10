@@ -2,6 +2,9 @@ const score = document.querySelector("#score");
 const playerChoice = document.querySelectorAll(".playerChoice");
 const showPlayerScore = document.querySelector("#player-score");
 const showComputerScore = document.querySelector("#computer-score");
+let playerPlay = document.querySelector("#player-play");
+let computerPlay = document.querySelector("#computer-play");
+let result = document.querySelector("#result");
 const roundsBtn = document.querySelectorAll(".rounds");
 const introScreen = document.querySelector('.intro');
 const gameScreen = document.querySelector('.container');
@@ -25,46 +28,76 @@ getComputerChoice = function() {
 playRound = function(playerSelection) {
     let computerSelection = getComputerChoice();
     if(playerSelection == computerSelection) {
-        return "It's a tie!";
+        if(playerSelection == "rock" && computerSelection == "rock") {
+            playerPlay.innerHTML = "<img id=\"rock-gif\" src=\"images/rock.gif\">";
+            computerPlay.innerHTML = "<img id=\"rock-gif\" src=\"images/rock.gif\">";
+            result.textContent = "It's a tie!";
+            return "It's a tie!";
+        }
+        if(playerSelection == "paper" && computerSelection == "paper") {
+            playerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+            computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+            result.textContent = "It's a tie!";
+            return "It's a tie!";
+        }
+        if(playerSelection == "scissors" && computerSelection == "scissors") {
+            playerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+            computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+            result.textContent = "It's a tie!";
+            return "It's a tie!";
+            
+        }
     }
     if(playerSelection == "rock") {
         if(computerSelection == "paper") {
+            playerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+            computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+            result.textContent = "You win!";
             return "You win!";
         }
         if(computerSelection == "scissors") {
+            playerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+            computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+            result.textContent = "You lose!";
             return "You lose!";
         }
     }
     if(playerSelection == "paper") {
         if(computerSelection == "rock") {
+            playerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+            computerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+            result.textContent = "You win!";
             return "You win!";
         }
         if(computerSelection == "scissors") {
+            playerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+            computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+            result.textContent = "You lose!";
             return "You lose!";
         }
     }
     if(playerSelection == "scissors") {
         if(computerSelection == "rock") {
+            playerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+            computerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
+            result.textContent = "You lose!";
             return "You lose!";
         }
         if(computerSelection == "paper") {
+            playerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
+            computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
+            result.textContent = "You win!";
             return "You win!";
         }
     }
 }
 
 
-updateScore = function(){
+playGame = function() {
     let playerScore = 0;
     let computerScore = 0;
     showPlayerScore.textContent = `${playerScore}`
     showComputerScore.textContent = `${computerScore}`
-}
-
-
-playGame = function(playerScore,computerScore) {
-    computerScore = 0;
-    playerScore = 0;
     introScreen.classList.remove('fadeOut');
     introScreen.classList.add('fadeIn');
     let ROUNDS = 0;
@@ -79,7 +112,6 @@ playGame = function(playerScore,computerScore) {
         })
     })
     
-    updateScore();
     playerChoice.forEach(choice =>{
         choice.addEventListener("click", () => {
             let playerSelection = choice.value;
@@ -122,18 +154,15 @@ playGame = function(playerScore,computerScore) {
 
 playGame();
 
-let pScore = 0;
-let cScore = 0;
-resetScore = function(){
-    updateScore();
-}
-
 playAgainBtn.addEventListener('click', e =>
 {
     winnerScreen.classList.remove('fadeIn');
     winnerScreen.classList.add('fadeOut');
-    resetScore();
-    playGame(pScore,cScore);
+    let playerScore = 0;
+    let computerScore = 0;
+    showPlayerScore.textContent = `${playerScore}`
+    showComputerScore.textContent = `${computerScore}`
+    playGame();
 });
 
 
