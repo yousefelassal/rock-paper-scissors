@@ -40,7 +40,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id=\"rock-gif\" src=\"images/rock.gif\">";
                 result.textContent = "It's a tie!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "It's a tie!";
         }
         if(playerSelection == "paper" && computerSelection == "paper") {
@@ -54,7 +54,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
                 result.textContent = "It's a tie!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "It's a tie!";
         }
         if(playerSelection == "scissors" && computerSelection == "scissors") {
@@ -68,7 +68,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
                 result.textContent = "It's a tie!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "It's a tie!";
             
         }
@@ -83,10 +83,10 @@ playRound = function(playerSelection) {
                 plays.classList.remove('fadeOut');
                 playerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
                 computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
-                result.textContent = "You win!";
+                result.textContent = "You lose!";
                 plays.classList.add('fadeIn');
-            },500);
-            return "You win!";
+            },300);
+            return "You lose!";
         }
         if(computerSelection == "scissors") {
             if(plays.classList.contains('fadeIn')) {
@@ -97,10 +97,10 @@ playRound = function(playerSelection) {
                 plays.classList.remove('fadeOut');
                 playerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
                 computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
-                result.textContent = "You lose!";
+                result.textContent = "You win!";
                 plays.classList.add('fadeIn');
-            },500);
-            return "You lose!";
+            },300);
+            return "You win!";
         }
     }
     if(playerSelection == "paper") {
@@ -115,7 +115,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
                 result.textContent = "You win!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "You win!";
         }
         if(computerSelection == "scissors") {
@@ -129,7 +129,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id='scissors-gif' src='images/scissors.gif'>";
                 result.textContent = "You lose!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "You lose!";
         }
     }
@@ -145,7 +145,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id='rock-gif' src='images/rock.gif'>";
                 result.textContent = "You lose!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "You lose!";
         }
         if(computerSelection == "paper") {
@@ -159,7 +159,7 @@ playRound = function(playerSelection) {
                 computerPlay.innerHTML = "<img id='paper-gif' src='images/paper.gif'>";
                 result.textContent = "You win!";
                 plays.classList.add('fadeIn');
-            },500);
+            },300);
             return "You win!";
         }
     }
@@ -192,14 +192,18 @@ playGame = function() {
             if(PlayRound == "You win!") {
                 console.log("You win!");
                 playerScore++;
-                showPlayerScore.textContent = `${playerScore}`
-                console.log(playerScore);
+                setTimeout(()=>{
+                    showPlayerScore.textContent = `${playerScore}`
+                    console.log(playerScore);
+                },300);
             }
             else if(PlayRound == "You lose!") {
                 console.log("You lose!");
                 computerScore++;
-                showComputerScore.textContent = `${computerScore}`
-                console.log(computerScore);
+                setTimeout(()=>{
+                    showComputerScore.textContent = `${computerScore}`
+                    console.log(computerScore);
+                },300);
             }
             else{
                 console.log("It's a tie!");
@@ -221,7 +225,7 @@ playGame = function() {
                     gameScreen.classList.add('fadeOut');
                     setTimeout(()=>{
                         winnerScreen.classList.add('fadeIn');
-                        winnerText.textContent = "You Won!";
+                        winnerText.textContent = "You Lost!";
                     },500);
                     return;
                 }
@@ -237,6 +241,7 @@ playAgainBtn.addEventListener('click', e =>
     winnerScreen.classList.remove('fadeIn');
     winnerScreen.classList.add('fadeOut');
     plays.classList.remove('fadeIn');
+    plays.classList.add('fadeOut');
     let playerScore = 0;
     let computerScore = 0;
     showPlayerScore.textContent = `${playerScore}`
