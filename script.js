@@ -5,6 +5,7 @@ const showComputerScore = document.querySelector("#computer-score");
 let playerPlay = document.querySelector("#player-play");
 let computerPlay = document.querySelector("#computer-play");
 let result = document.querySelector("#result");
+let plays = document.querySelector(".result-container");
 const roundsBtn = document.querySelectorAll(".rounds");
 const introScreen = document.querySelector('.intro');
 const gameScreen = document.querySelector('.container');
@@ -117,18 +118,21 @@ playGame = function() {
             let playerSelection = choice.value;
             let PlayRound = playRound(playerSelection);
             if(PlayRound == "You win!") {
+                plays.classList.add('fadeIn');
                 console.log("You win!");
                 playerScore++;
                 showPlayerScore.textContent = `${playerScore}`
                 console.log(playerScore);
             }
             else if(PlayRound == "You lose!") {
+                plays.classList.add('fadeIn');
                 console.log("You lose!");
                 computerScore++;
                 showComputerScore.textContent = `${computerScore}`
                 console.log(computerScore);
             }
             else{
+                plays.classList.add('fadeIn');
                 console.log("It's a tie!");
             }
             console.log(`Player Score: ${playerScore} Computer Score: ${computerScore}`);
@@ -158,6 +162,7 @@ playAgainBtn.addEventListener('click', e =>
 {
     winnerScreen.classList.remove('fadeIn');
     winnerScreen.classList.add('fadeOut');
+    plays.classList.remove('fadeIn');
     let playerScore = 0;
     let computerScore = 0;
     showPlayerScore.textContent = `${playerScore}`
