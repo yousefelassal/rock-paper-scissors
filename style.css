@@ -87,7 +87,6 @@ header{
     justify-content: space-between;
     align-items: center;
     flex-flow: row wrap;
-    transition: opacity 0.2s ease 0.6s;
 }
 
 #player-play img, #computer-play img{
@@ -107,6 +106,7 @@ header{
     color: #FF4E4E;
     height:150%;
     width:35%;
+    transition: opacity 0.2s ease 0.2s;
 }
 
 button{
@@ -142,7 +142,7 @@ button{
     align-items: center;
     justify-content: space-around;
     height: 60vh;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease 0.2s;
 }
 
 .intro .intro-buttons{
@@ -199,5 +199,5 @@ div.fadeIn
     position: center;
     transform: translate(0, -225%);
     height: 50vh;
-    transition: opacity 1s ease;
+    transition: opacity 1s ease 0.2s;
 }
